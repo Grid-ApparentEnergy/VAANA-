@@ -1,0 +1,27 @@
+[
+    {
+        "question": "How many records are in the product table to see available device types?",
+        "sql": "SELECT COUNT(*) AS total_record_count FROM product;",
+        "response": "There are 5 records in the product table, which you can examine to see the available device types."
+    },
+    {
+        "question": "Show me a count of records in the event_raw table for the last 7 days.",
+        "sql": "SELECT COUNT(*) FROM event_raw WHERE event_time >= CURRENT_DATE - INTERVAL '7 days';",
+        "response": "It looks like there was a syntax error in the SQL query related to the date calculation. Let me correct that and try again. It looks like there was a syntax error in the SQL query related to the date calculation. Let me correct that and try again. The count of records in the `event_raw` table for the last 7 days is 1,012,833."
+    },
+    {
+        "question": "What are the active business services for device dev__EEOT4056946?",
+        "sql": "SELECT business_service_name FROM business_services WHERE device_id = 'dev__EEOT4056946' AND status = 'active';",
+        "response": "It seems that I am encountering difficulties identifying the correct column names in the database. Could you provide more information on the database schema or the fields available in the `business_services` table? Specifically, knowing the exact column names used for the device identifier and service name would be very helpful in constructing a more accurate query."
+    },
+    {
+        "question": "Which cities have the most service points? List top 5.",
+        "sql": "SELECT a.city, COUNT(sp.id) AS service_point_count FROM service_points sp JOIN addresses a ON sp.address_id = a.id GROUP BY a.city ORDER BY service_point_count DESC LIMIT 5;",
+        "response": "It seems there was an error in the query due to a missing field. Let's first check the structure of the `service_points` table to ensure we are using the correct column names. It seems there was an error in the query due to a missing field. Let's first check the structure of the `service_points` table to ensure we are using the correct column names. The top 5 cities with the most service points are: 1. **Raipur** with 20,018 service points 2. **Birgaon** with 17,275 service points 3. **Kumhari** with 4,661 service points 4. **An unnamed location** with 668 service points 5. **Bhakhara** with 224 service points"
+    },
+    {
+        "question": "Show me the first 5 records from the device table.",
+        "sql": "SELECT * FROM device LIMIT 5;",
+        "response": "I have fetched the first 5 records from the `device` table. You can view the details in the file provided: [query_results_d0083a0c.csv](sandbox:/mnt/data/query_results_d0083a0c.csv)."
+    }
+]

@@ -1,0 +1,72 @@
+# ========================================
+# AUTO-GENERATED & BUILD OUTPUT FOLDERS
+# ========================================
+# Python
+**/__pycache__/
+*.py[cod]
+*$py.class
+**/*.pyc
+.venv/
+venv/
+ENV/
+env/
+**/Lib/
+**/Scripts/
+**/Include/
+
+# Node.js
+node_modules/
+dist/
+build/
+.next/
+
+# Virtual environment backups
+backend/VAANA_MAIN/i_m_back/
+
+# ========================================
+# LARGE BINARY & MODEL FILES (>50MB) 
+# ========================================
+backend/VAANA_MAIN/b4a5c66dd02fcd3f/
+backend/VAANA_MAIN/**/*.csv
+
+# Vector Databases (Chroma DB Binaries)
+backend/VAANA_MAIN/vanna_2_0_chroma_db/
+backend/vanna_2_0_chroma_db/
+*.db
+*.sqlite3
+
+# ========================================
+# SECRET / CREDENTIAL FILES
+# ========================================
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.key
+*.pem
+*.cer
+*.p12
+
+# ========================================
+# TEMPORARY & OS JUNK FILES
+# ========================================
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+*.swp
+
+# ========================================
+# IDE & EDITOR FILES
+# ========================================
+.vscode/
+.idea/
+
+# ========================================
+# LOCAL DEV EXCLUSIONS
+# ========================================
+_large_files_manual_add/
+audit_report*.json
+audit.py
+summary.txt

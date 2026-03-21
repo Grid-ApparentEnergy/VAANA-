@@ -1,0 +1,12 @@
+python-multipart
+pinecone-client
+psycopg2-binary
+sqlglot
+aiosqlite
+pytest
+chromadb
+pg8000
+fastapi
+uvicorn
+vanna
+openai

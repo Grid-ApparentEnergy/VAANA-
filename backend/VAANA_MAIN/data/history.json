@@ -1,0 +1,63 @@
+[
+    {
+        "id": "web-e01b6cb7",
+        "question": "Tell me Daily/weekly/Monthly summary for DT meter (DT meter ID) for today/yesterday/Week period/Month period. This query should include summaries from Interval data, Event data. Summaries like Peak Load, Avg Load with time or time range, Event with severity and category, counts and minutes for which event was there.  \\set dt_meter_id  'DEV-001' \\set period_type  'LAST_MONTH'  -- period_type options: --   'TODAY' | 'YESTERDAY' | 'THIS_WEEK' | 'LAST_WEEK' | 'THIS_MONTH' | 'LAST_MONTH'",
+        "sql": "SELECT event_category, event_severity, COUNT(*) AS event_count, SUM(duration_minutes) AS total_duration\nFROM event_data\nWHERE dt_meter_id = 'DEV-001' AND timestamp >= date_trunc('month', CURRENT_DATE - interval '1 month') AND timestamp < date_trunc('month', CURRENT_DATE)\nGROUP BY event_category, event_severity\nORDER BY event_category, event_severity;",
+        "response": "Tool failed: relation \"interval_data\" does not exist\nLINE 2: FROM interval_data\n             ^\nError executing query: relation \"interval_data\" does not exist\nLINE 2: FROM interval_data\n             ^\nTool failed: relation \"event_data\" does not exist\nLINE 2: FROM event_data\n             ^\nError executing query: relation \"event_data\" does not exist\nLINE 2: FROM event_data\n             ^\nIt seems that there is an issue with accessing your data, as the tables `interval_data` and `event_data` do not exist in the database. Please double-check the names of the tables or inform me if there is an alternative data source that I should use.",
+        "table_file": null,
+        "table_data": null,
+        "timestamp": "2026-03-20T12:40:03.692964"
+    },
+    {
+        "id": "web-fc70655a",
+        "question": "today",
+        "sql": "SQL NOT FOUND",
+        "response": "Today's date is 2026-03-20. How can I assist you with your data analysis tasks today?",
+        "table_file": null,
+        "table_data": null,
+        "timestamp": "2026-03-20T12:38:58.838421"
+    },
+    {
+        "id": "web-d8259a75",
+        "question": "Tell me Daily/weekly/Monthly summary for DT meter (DT meter ID) for today/yesterday/Week period/Month period.",
+        "sql": "SQL NOT FOUND",
+        "response": "In order to provide a daily, weekly, or monthly summary for the specified DT meter, I need to know the following details:\n\n1. **DT Meter ID**: The specific ID of the meter you want the summary for.\n2. **Time Period**: Please specify if you need the summary for today, yesterday, the current week, or the current month.\n\nOnce you provide this information, I can generate the required summary for you.",
+        "table_file": null,
+        "table_data": null,
+        "timestamp": "2026-03-20T12:38:43.113847"
+    },
+    {
+        "id": "web-4b13f36d",
+        "question": "How many consumers are connected to DT (DT meter)",
+        "sql": "SELECT COUNT(DISTINCT consumer_id) AS total_consumers FROM meters WHERE meter_type = 'DT (DT meter)';",
+        "response": "Tool failed: relation \"meters\" does not exist\nLINE 1: ...UNT(DISTINCT consumer_id) AS total_consumers FROM meters WHE...\n                                                             ^\nError executing query: relation \"meters\" does not exist\nLINE 1: ...UNT(DISTINCT consumer_id) AS total_consumers FROM meters WHE...\n                                                             ^\nIt appears that the table \"meters\" does not exist in the database. Can you provide the correct table name or details on where this information is stored?",
+        "table_file": null,
+        "table_data": null,
+        "timestamp": "2026-03-20T12:37:46.772896"
+    },
+    {
+        "id": "web-817ea9c5",
+        "question": "How many consumers are connected to DT (DT meter)",
+        "sql": "SELECT COUNT(*) FROM consumers WHERE meter_type = 'DT'",
+        "response": "Tool failed: relation \"consumers\" does not exist\nLINE 1: SELECT COUNT(*) FROM consumers WHERE meter_type = 'DT'\n                             ^\nError executing query: relation \"consumers\" does not exist\nLINE 1: SELECT COUNT(*) FROM consumers WHERE meter_type = 'DT'\n                             ^\nIt seems there is no table named \"consumers\" in the database. Could you please confirm the table name or provide more details about the database schema related to consumers and meter types?",
+        "table_file": null,
+        "table_data": null,
+        "timestamp": "2026-03-20T12:35:48.572288"
+    },
+    {
+        "id": "web-a03d5514",
+        "question": "show me the total tables",
+        "sql": "SQL NOT FOUND",
+        "response": "Tool completed successfullycount\r\n27\r\n\n\nResults saved to file: query_results_7b3958fc.csv\n\n**IMPORTANT: FOR VISUALIZE_DATA USE FILENAME: query_results_7b3958fc.csv**There are a total of 27 tables in the public schema of the database. If you need further details or analysis, let me know!",
+        "table_file": null,
+        "timestamp": "2026-03-20T12:29:35.853556"
+    },
+    {
+        "id": "web-2280a2a0",
+        "question": "Show me the first 5 records of the device table",
+        "sql": "SQL NOT FOUND",
+        "response": "Tool completed successfullyid,name,alt_id,device_type,serial_number,product_id,status,attr_json,org_id,insert_by,last_upd_by,insert_ts,last_upd_ts,rev\r\ndev__S1452121,DEV_S1452121,S1452121,,S1452121,prod_org-1_Feeder Meter - SEMS,Active,\"{'Sec-I': '5', 'Sec-V': '110', 'Prim-I': '5', 'Prim-V': '110'}\",org-1,xlsx-seeder,xlsx-seeder,2026-03-15 01:45:27.722003,2026-03-17 11:50:11.034875,4\r\ndev__S1452215,DEV_S1452215,S1452215,,S1452215,prod_org-1_Feeder Meter - SEMS,Active,\"{'Sec-I': '0', 'Sec-V': '0', 'Prim-I': '0', 'Prim-V': '0'}\",org-1,xlsx-seeder,xlsx-seeder,2026-03-15 01:45:29.756170,2026-03-17 11:50:13.393663,4\r\ndev__S1421120,DEV_S1421120,S1421120,,S1421120,prod_org-1_Feeder Meter - SEMS,Active,\"{'Sec-I': '0', 'Sec-V': '0', 'Prim-I': '0', 'Prim-V': '0'}\",org-1,xlsx-seeder,xlsx-seeder,2026-03-15 01:45:30.295053,2026-03-17 11:50:13.975263,4\r\ndev__S1451989,DEV_S1451989,S1451989,,S1451989,prod_org-1_Feeder Meter - SEMS,Active,\"{'Sec-I': '5', 'Sec-V': '110', 'Prim-I': '5', 'Prim-V': '110'}\",org-1,xlsx-seeder,xlsx-see\n(Results truncated to 1000 characters. FOR LARGE RESULTS YOU DO NOT NEED TO SUMMARIZE THESE RESULTS OR PROVIDE OBSERVATIONS. THE NEXT STEP SHOULD BE A VISUALIZE_DATA CALL)\n\nResults saved to file: query_results_25e5bfaa.csv\n\n**IMPORTANT: FOR VISUALIZE_DATA USE FILENAME: query_results_25e5bfaa.csv**The first 5 records of the `device` table have been retrieved and saved as a CSV file. You can download the file using the link below to view the complete details:\n\n[Download the device table sample records.](sandbox:/mnt/data/query_results_25e5bfaa.csv)",
+        "table_file": null,
+        "timestamp": "2026-03-20T12:29:31.407948"
+    }
+]

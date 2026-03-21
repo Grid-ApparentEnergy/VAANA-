@@ -1,0 +1,21 @@
+import os
+from dotenv import load_dotenv
+
+# Load environment variables at the very beginning
+load_dotenv()
+
+# OpenAI Configuration
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+
+# PostgreSQL Configuration
+POSTGRES_DB_CONFIG = {
+    'host': 'mdm-integ-rds.c5iooks2cnmi.ap-south-1.rds.amazonaws.com',
+    'database': 'mdmdb',
+    'user': 'rag_user',
+    'password': 'mdmrag1234',
+    'port': 5432
+}
+
+# ChromaDB Configuration
+CHROMA_DB_PATH = "./vanna_2_0_chroma_db"
+CHROMA_COLLECTION_NAME = "mdm_memory_v2"
