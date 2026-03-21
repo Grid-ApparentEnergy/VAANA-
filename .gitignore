@@ -13,6 +13,7 @@ target/
 venv/
 env/
 i_m_back/
+i_am_back/
 main.cpython-*.pyc
 
 # Environment
