@@ -9,11 +9,11 @@ OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
 # PostgreSQL Configuration
 POSTGRES_DB_CONFIG = {
-    'host': 'mdm-integ-rds.c5iooks2cnmi.ap-south-1.rds.amazonaws.com',
-    'database': 'mdmdb',
-    'user': 'rag_user',
-    'password': 'mdmrag1234',
-    'port': 5432
+    'host': os.getenv("DB_HOST"),
+    'database': os.getenv("DB_NAME"),
+    'user': os.getenv("DB_USER"),
+    'password': os.getenv("DB_PASSWORD"),
+    'port': os.getenv("DB_PORT")
 }
 
 # ChromaDB Configuration
