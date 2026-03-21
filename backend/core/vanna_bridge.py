@@ -5,6 +5,9 @@ All imports from VAANA_MAIN happen here. Nothing else imports VAANA_MAIN directl
 
 import os
 import sys
+import logging
+
+logger = logging.getLogger(__name__)
 
 # The backend/config package inevitably shadows VAANA_MAIN/core/config.py.
 # To let vanna_setup load the correct variables (like OPENAI_API_KEY), we momentarily pop it.
@@ -55,17 +58,16 @@ def train_if_needed(force: bool = False) -> dict:
 
     try:
         vn = get_vanna()
-        
-        # 1. DDL — Reading from the explicit data directory provided by the user
+        # Load DDL schema context
         mdm_ddl_path = os.path.join(os.path.dirname(__file__), '../VAANA_MAIN/data/mdm-ddl.sql')
         with open(mdm_ddl_path, 'r', encoding='utf-8') as f:
             full_ddl = f.read()
         vn.agent_memory.add_ddl(full_ddl)
 
-        # 2. Domain documentation
+        # Load domain documentation
         vn.agent_memory.add_documentation(MDM_DOCUMENTATION)
 
-        # 3. Event codes — teach Vanna what each code means
+        # Load event structural context
         event_lines = ["Event codes in event_raw table (event_code column stores these as strings like '0101'):"]
         for e in ALLOWED_EVENTS:
             event_lines.append(
@@ -78,14 +80,14 @@ def train_if_needed(force: bool = False) -> dict:
         
         vn.agent_memory.add_documentation("\n".join(event_lines))
 
-        # 4. Seed known-good example Q&A pairs
+        # Seed initial example database
         _seed_examples(vn)
 
         os.makedirs(os.path.dirname(TRAINED_FLAG), exist_ok=True)
         open(TRAINED_FLAG, "w").close()
         return {"trained": True, "reason": "completed"}
     except Exception as e:
-        print(f"[vanna_bridge] Training error: {e}")
+        logger.error(f"Training error: {e}")
         return {"trained": False, "reason": str(e)}
 
 def _seed_examples(vn) -> None:
@@ -99,11 +101,11 @@ def _seed_examples(vn) -> None:
             for item in examples:
                 if "question" in item and "sql" in item:
                     vn.agent_memory.add_sql(question=item["question"], sql=item["sql"])
-            print("[vanna_bridge] Explicit examples.json seeded successfully.")
+            logger.info("Explicit examples.json seeded successfully.")
         except Exception as e:
-            print(f"[vanna_bridge] Failed to seed examples.json: {e}")
+            logger.error(f"Failed to seed examples.json: {e}")
     else:
-        print("[vanna_bridge] WARNING: examples.json not found in data directory.")
+        logger.warning("examples.json not found in data directory.")
 
 # ── SQL Generation ────────────────────────────────────────────
 async def generate_sql(prompt: str) -> str | None:
@@ -157,7 +159,7 @@ async def generate_sql(prompt: str) -> str | None:
         return sql.strip()
         
     except Exception as e:
-        print(f"[vanna_bridge] generate_sql error: {e}")
+        logger.error(f"generate_sql error: {e}")
         return None
 
 # ── SQL Execution (via Vanna's built-in runner if available) ──

@@ -1,72 +1,82 @@
-# ========================================
-# AUTO-GENERATED & BUILD OUTPUT FOLDERS
-# ========================================
-# Python
-**/__pycache__/
-*.py[cod]
-*$py.class
-**/*.pyc
-.venv/
-venv/
-ENV/
-env/
-**/Lib/
-**/Scripts/
-**/Include/
-
-# Node.js
+# Build output
 node_modules/
+__pycache__/
 dist/
 build/
 .next/
+out/
+.gradle/
+target/
+*.egg-info/
+.eggs/
+.venv/
+venv/
+env/
+i_m_back/
+main.cpython-*.pyc
 
-# Virtual environment backups
-backend/VAANA_MAIN/i_m_back/
-
-# ========================================
-# LARGE BINARY & MODEL FILES (>50MB) 
-# ========================================
-backend/VAANA_MAIN/b4a5c66dd02fcd3f/
-backend/VAANA_MAIN/**/*.csv
-
-# Vector Databases (Chroma DB Binaries)
-backend/VAANA_MAIN/vanna_2_0_chroma_db/
-backend/vanna_2_0_chroma_db/
-*.db
-*.sqlite3
-
-# ========================================
-# SECRET / CREDENTIAL FILES
-# ========================================
+# Environment
 .env
 .env.local
-.env.development.local
-.env.test.local
-.env.production.local
+.env.*.local
+
+# Secrets
 *.key
 *.pem
 *.cer
 *.p12
+*.pfx
 
-# ========================================
-# TEMPORARY & OS JUNK FILES
-# ========================================
-.DS_Store
-Thumbs.db
+# Large/binary
+*.bin
+*.pt
+*.pth
+*.onnx
+*.h5
+*.pkl
+*.weights
+*.safetensors
+*.exe
+*.dll
+*.so
+*.zip
+*.tar.gz
+*.sqlite3
+*.db
+vanna_2_0_chroma_db/
+backend/VAANA_MAIN/b4a5c66dd02fcd3f/query_results_f89827e5.csv
+
+# Logs & temp
 *.log
 *.tmp
+.DS_Store
+Thumbs.db
 *.swp
+*.swo
+audit_report*.json
+summary.txt
+push_error.txt
+audit.py
+new_audit.py
+run_demo.ps1
 
-# ========================================
-# IDE & EDITOR FILES
-# ========================================
+# IDE
 .vscode/
 .idea/
+*.iml
 
-# ========================================
-# LOCAL DEV EXCLUSIONS
-# ========================================
-_large_files_manual_add/
-audit_report*.json
-audit.py
-summary.txt
+# Extra MD Documentation
+DEMO_VIDEO_GUIDE.md
+DEPLOYMENT_READY.md
+FIXED_ISSUE.md
+QUICK_START.md
+backend/DATA_PRESENTATION.md
+backend/SUMMARY_QUERIES.md
+backend/SYSTEM_STATUS.md
+backend/TESTING.md
+_large_files_manual_add/INSTRUCTIONS.md
+
+# Manual Assets Exclusions
+_manual_assets/
+
+backend/VAANA_MAIN/b4a5c66dd02fcd3f/
